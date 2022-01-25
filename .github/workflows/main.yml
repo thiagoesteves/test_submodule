@@ -1,0 +1,20 @@
+
+
+name: Submodules Test sha
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-application:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Create Submodules env SHA
+        run: echo "SUBMODULES_SHA=$(git submodule status apps/submodule | head -n1 | awk '{print $1;}')" >> $GITHUB_ENV
+      - name: Test
+        run: echo $SUBMODULES_SHA

@@ -1,0 +1,3 @@
+[submodule "apps/submodule"]
+	path = apps/submodule
+	url = git@github.com:thiagoesteves/xfp_elixir.git
